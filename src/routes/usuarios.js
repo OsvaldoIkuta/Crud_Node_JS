@@ -45,12 +45,12 @@ const validateBody = {
 router.post('/', authenticationMiddleware, validateSchema(validateBody), controller.cadastro)
 
 //Busca um usuário por id
-router.get('/:usuarioId', controller.buscaPorId)
+router.get('/:usuarioId', authenticationMiddleware, controller.buscaPorId)
 
 //Edição de um usuário
 router.put('/:usuarioId', authenticationMiddleware, validateSchema(validateBody),  controller.edicao)
 
 //login do usuário
-router.post('/login', controller.login)
+router.post('/login', authenticationMiddleware, controller.login)
 
 module.exports = router;
